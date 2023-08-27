@@ -1,6 +1,6 @@
 <div class="filterBy">
-  <input type="text" placeholder="שם" [ngModel]="byName.value" (ngModelChange)="byName.value = $event; trigger = !trigger" [ngModelOptions]="{updateOn: 'blur'}">
-  <input type="text" placeholder="עיר" [ngModel]="byCity.value" (ngModelChange)="byCity.value = $event; trigger = !trigger" [ngModelOptions]="{updateOn: 'blur'}">
+  <input type="text" placeholder="שם" [ngModel]="filterValues.byName.value" (ngModelChange)="setNewValue('byName', $event)" [ngModelOptions]="{updateOn: 'blur'}">
+  <input type="text" placeholder="עיר" [ngModel]="filterValues.byCity.value" (ngModelChange)="setNewValue('byCity', $event)" [ngModelOptions]="{updateOn: 'blur'}">
 </div>
 <div class="table">
   <div class="table-item table-head">
@@ -8,7 +8,7 @@
     <p>עיר</p>
     <p>רחוב</p>
   </div>
-  <div *ngFor="let user of users | filter : trigger : byName : byCity" class="table-item table-body">
+  <div *ngFor="let user of users | filter : filterValues.byName : filterValues.byCity" class="table-item table-body">
     <p>{{user.name}}</p>
     <p>{{user.address.city}}</p>
     <p>{{user.address.street}}</p>

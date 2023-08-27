@@ -6,11 +6,11 @@ import { FilterBy } from './models/filterBy';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-    selector: 'app-root',
-    standalone: true,
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss'],
-    imports: [CommonModule, FilterPipe, FormsModule]
+  selector: 'app-root',
+  standalone: true,
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+  imports: [CommonModule, FilterPipe, FormsModule]
 })
 export class AppComponent {
   title = 'filterPipeTest';
@@ -21,7 +21,13 @@ export class AppComponent {
     new TableValue("אברהם", new Address("בית שמש", "שאול המלך")),
   ]
 
-  byName = new FilterBy("name", "אוריאל")
-  byCity = new FilterBy("address.city", "ירושלים")
-  trigger = true
+  filterValues = {
+    byName: new FilterBy("name", "אוריאל"),
+    byCity: new FilterBy("address.city", "ירושלים")
+  }
+
+  setNewValue(filedToChange: keyof typeof this.filterValues, newVal: string) {
+    const key = this.filterValues[filedToChange].key
+    this.filterValues[filedToChange] = new FilterBy(key, newVal)
+  }
 }

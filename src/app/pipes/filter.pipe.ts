@@ -7,14 +7,14 @@ import { FilterBy } from '../models/filterBy';
 })
 export class FilterPipe implements PipeTransform {
 
-  transform<T>(values: T[], trigger: boolean, ...args: FilterBy[]): T[] {
+  transform<T>(values: T[], ...args: FilterBy[]): T[] {
     let newValues = values
     args.forEach(arg => {
       if(arg.value == "") return
       newValues = newValues.filter(val => {
         let value: any = val
 
-        arg.key.forEach(k => {
+        arg.keys.forEach(k => {
           value = value[k as keyof typeof value]
         });
         return value == arg.value

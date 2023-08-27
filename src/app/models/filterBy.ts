@@ -1,7 +1,7 @@
 export class FilterBy{
-    public get key() : string[] {
-        return this._key.split(".")
+    public get keys() : string[] {
+        return this.key.split(".")
     }
 
-    constructor(private _key:string, public value:any){}
+    constructor(public key:string, public value:any){}
 }

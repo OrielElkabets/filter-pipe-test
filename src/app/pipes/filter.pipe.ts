@@ -14,7 +14,7 @@ export class FilterPipe implements PipeTransform {
       newValues = newValues.filter(val => {
         let value: any = val
 
-        arg.key.forEach(k => {
+        arg.keys.forEach(k => {
           value = value[k as keyof typeof value]
         });
         return value == arg.value

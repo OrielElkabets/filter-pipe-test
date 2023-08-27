@@ -1,6 +1,6 @@
 <div class="filterBy">
-  <input type="text" placeholder="שם" [ngModel]="filterValues.byName.value" (ngModelChange)="setNewValue('byName', $event)" [ngModelOptions]="{updateOn: 'blur'}">
-  <input type="text" placeholder="עיר" [ngModel]="filterValues.byCity.value" (ngModelChange)="setNewValue('byCity', $event)" [ngModelOptions]="{updateOn: 'blur'}">
+  <input type="text" placeholder="שם" [ngModel]="filterValues.byName.value" (ngModelChange)="setNewValue('byName', $event)" [ngModelOptions]="{updateOn: 'blur'}" (keypress)="blurFocus($event)">
+  <input type="text" placeholder="עיר" [ngModel]="filterValues.byCity.value" (ngModelChange)="setNewValue('byCity', $event)" [ngModelOptions]="{updateOn: 'blur'}" (keypress)="blurFocus($event)">
 </div>
 <div class="table">
   <div class="table-item table-head">

@@ -30,4 +30,13 @@ export class AppComponent {
     const key = this.filterValues[filedToChange].key
     this.filterValues[filedToChange] = new FilterBy(key, newVal)
   }
+
+  blurFocus(event:KeyboardEvent){
+    if(event.key == "Enter") {
+      (event.target as HTMLInputElement).blur()
+      setTimeout(() => {
+        (event.target as HTMLInputElement).focus()
+      }, 0);
+    }
+  }
 }
